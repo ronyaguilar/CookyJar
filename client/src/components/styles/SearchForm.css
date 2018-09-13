@@ -1,0 +1,55 @@
+@media screen and (min-width: 480px){
+  .search-form{
+    display: grid;
+    height: 100%;
+    margin-top: 30px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 100px 30px 40px 40px;
+    grid-template-areas:
+      "i i i i i i i i i i i i"
+      ". . . . . . . . . . . ."
+      ". . b b b b b b b b . ."
+      ". . s s s s s s s s . .";
+  }
+}
+
+@media screen and (max-width: 479px){
+  .search-form{
+    display: grid;
+    height: 100%;
+    margin-top: 30px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 100px 30px 40px 40px;
+    grid-template-areas:
+      "i i i i i i i i i i i i"
+      ". . . . . . . . . . . ."
+      "b b b b b b b b b b b b"
+      "s s s s s s s s s s s s";
+  }
+}
+.intro{
+    font-size: 3em;
+    font-family: 'Dancing Script', cursive;
+    grid-area: i;
+}
+
+.active{
+  background-color: black;
+}
+
+.active:focus{
+  outline: none;
+  border-color: white;
+}
+
+.tabs {
+  grid-area: b;
+}
+
+.search-input{
+  grid-area: s;
+}
+
+.fill{
+  height: 100%;
+}
