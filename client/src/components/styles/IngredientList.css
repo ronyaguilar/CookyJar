@@ -1,0 +1,11 @@
+h2{
+  font-family: 'Dancing Script', cursive;
+  text-decoration: underline;
+  padding-left: 25px;
+}
+
+.list {
+
+  padding-left: 25px;
+  border-left: black solid thin;
+}

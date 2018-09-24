@@ -8,6 +8,16 @@
   align-items: center;
 }
 
+h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+h1 a:hover{
+  color: grey;
+  text-decoration: none;
+}
+
 .title {
   font-size: 4em;
   font-family: 'Dancing Script', cursive;

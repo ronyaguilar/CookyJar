@@ -3,12 +3,10 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import './styles/App.css';
 
 import Header from "./Header";
-import SearchForm from "./SearchForm";
+import SearchContainer from "./SearchContainer";
+import RecipeContainer from "./RecipeContainer";
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
 
   render() {
 
@@ -17,7 +15,8 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route exact path='/' component={SearchForm}/>
+            <Route exact path='/' component={SearchContainer}/>
+            <Route path='/recipe/:id' component={RecipeContainer}/>
           </div>
         </BrowserRouter>
       </div>

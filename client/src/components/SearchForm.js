@@ -1,40 +1,59 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import './styles/SearchForm.css';
+
+import * as actions from '../actions';
+import SearchButtonGroup from './SearchButtonGroup';
+import SearchInputField from './SearchInputField';
 
 class SearchForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      searchValue: ""
-    };
+      value: ''
+    }
   }
 
-  clickHandler(e) {
+  onSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-    let oldButton = document.querySelector('.active');
-    oldButton.className = 'btn btn-secondary';
-    e.target.className = 'btn btn-secondary active';
+    e.stopPropagation();
+
+    console.log("Handling submit with: " + this.props.category);
+    switch(this.props.category){
+      case 'ingredients':
+        this.props.searchByIngredient(this.state.value);
+        break;
+      case 'cuisine':
+        this.props.searchByCuisine(this.state.value);
+        break;
+      default:
+        break;
+    }
+  }
+
+  onTextChange = (e) => {
+    this.setState({
+      value: e.target.value
+    });
   }
 
   render(){
     return(
-      <div className='search-form'>
+      <form className='search-form' onSubmit={(e) => this.onSubmit(e)}>
         <h1 className='intro'>Hungry?</h1>
-        <div className='btn-group btn-group-sm tabs' role='group' aria-label='Filter Tabs'>
-          <button onClick={this.clickHandler} type='button' className='btn btn-secondary active'>Search By Name</button>
-          <button onClick={this.clickHandler} type='button' className='btn btn-secondary'>Search By Ingredient</button>
-          <button onClick={this.clickHandler} type='button' className='btn btn-secondary'>Search By Category</button>
-        </div>
-        <div className='input-group mb-3 search-input fill'>
-          <input type='text' className='form-control' placeholder='Search for recipes!' aria-label='Recipe search'/>
-          <div className='input-group-append'>
-            <button className='btn btn-secondary' type='button' id='search-button'>Search</button>
-          </div>
-        </div>
-      </div>
+        <SearchButtonGroup />
+        <SearchInputField
+          category={this.props.category}
+          value={this.state.value}
+          handleChange={this.onTextChange}/>
+      </form>
     );
   }
 }
 
-export default SearchForm;
+const mapStateToProps = (state) => {
+  return {category: state.category};
+}
+
+export default connect(mapStateToProps, actions)(SearchForm);

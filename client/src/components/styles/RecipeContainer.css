@@ -1,0 +1,39 @@
+@media only screen and (min-width: 750px) {
+  .recipe-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 370px auto;
+    grid-template-areas: 'title title'
+                         'image ingr'
+                         'instr ingr'
+  }
+}
+
+@media only screen and (max-width: 749px){
+  .recipe-container{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 100px 370px auto auto;
+    grid-template-areas: 'title'
+                         'image'
+                         'ingr'
+                         'instr'
+  }
+}
+
+.recipe-title{
+  grid-area: title;
+}
+
+.recipe-image{
+  grid-area: image;
+}
+
+.ingredient-list{
+  grid-area: ingr;
+}
+
+.instruction-list{
+  margin-top: 50px;
+  grid-area: instr;
+}

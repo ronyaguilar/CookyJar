@@ -1,0 +1,8 @@
+export const SEARCH_CATEGORY = {
+  INGREDIENT: 'INGREDIENT',
+  CUISINE: 'CUISINE'
+}
+
+export const SEARCH = 'SEARCH';
+
+export const FETCH_RECIPE = 'FETCH_RECIPE';
