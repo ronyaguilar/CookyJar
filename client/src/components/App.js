@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
+
+import * as actions from '../actions';
 import './styles/App.css';
 
 import Header from "./Header";
@@ -7,6 +10,10 @@ import SearchContainer from "./SearchContainer";
 import RecipeContainer from "./RecipeContainer";
 
 class App extends Component {
+
+  componentDidMount(){
+    this.props.fetchUser();
+  }
 
   render() {
 
@@ -24,4 +31,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, actions)(App);

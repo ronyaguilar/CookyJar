@@ -15,14 +15,14 @@ class SearchButtonGroup extends Component {
     return(
       <div className='btn-group btn-group-sm tabs' role='group' aria-label='Filter Tabs'>
         <button onClick={(e) => {
-            this.clickHandler(e);
-            this.props.changeCategory('ingredient');
-          }
-        } type='button' className='btn btn-secondary active'>Search By Ingredient</button>
-        <button onClick={(e) => {
           this.clickHandler(e);
-          this.props.changeCategory('cuisine');
-        }} type='button' className='btn btn-secondary'>Search By Cuisine</button>
+          this.props.changeCategory('keyword');
+        }} type='button' className='btn btn-secondary active'>Search By Keyword</button> 
+        <button onClick={(e) => {
+            this.clickHandler(e);
+            this.props.changeCategory('ingredients');
+          }
+        } type='button' className='btn btn-secondary'>Search By Ingredients</button>
       </div>
     );
   }

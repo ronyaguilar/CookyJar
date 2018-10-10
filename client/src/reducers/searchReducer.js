@@ -1,10 +1,10 @@
 import {SEARCH_CATEGORY, SEARCH} from '../actions/types';
 
-export const category = (initial="ingredients", action) => {
+export const category = (initial="keyword", action) => {
   switch(action.type){
-    case SEARCH_CATEGORY.INGREDIENT:
+    case SEARCH_CATEGORY.INGREDIENTS:
       return action.payload
-    case SEARCH_CATEGORY.CUISINE:
+    case SEARCH_CATEGORY.KEYWORD:
       return action.payload
     default:
       return initial

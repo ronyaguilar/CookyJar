@@ -1,17 +1,17 @@
-import {SEARCH_CATEGORY, SEARCH, FETCH_RECIPE} from './types';
+import {SEARCH_CATEGORY, SEARCH, FETCH_RECIPE, FETCH_USER} from './types';
 import {API_KEY} from '../config/key';
 import axios from 'axios';
 
 export const changeCategory = (category) => dispatch => {
   switch(category){
-    case 'ingredient':
-      dispatch({type: SEARCH_CATEGORY.INGREDIENT, payload: 'ingredient'});
+    case 'ingredients':
+      dispatch({type: SEARCH_CATEGORY.INGREDIENTS, payload: 'ingredients'});
       break;
-    case 'cuisine':
-      dispatch({type: SEARCH_CATEGORY.CUISINE, payload: 'cuisine'});
+    case 'keyword':
+      dispatch({type: SEARCH_CATEGORY.KEYWORD, payload: 'keyword'});
       break;
     default:
-      dispatch({type: SEARCH_CATEGORY.INGREDIENT, payload: 'ingredient'});
+      dispatch({type: SEARCH_CATEGORY.KEYWORD, payload: 'keyword'});
   }
 }
 
@@ -31,12 +31,12 @@ export const fetchRecipe = (id) => async dispatch => {
   dispatch({type: FETCH_RECIPE, payload: response.data});
 }
 
-export const searchByIngredient = (text) => async dispatch => {
+export const searchByIngredients = (text) => async dispatch => {
   const response = await axios({
     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients',
     method: 'get',
     params: {
-      fillIngredients: false,
+      fillIngredients: true,
       ingredients: text,
       limitLicense: false,
       number: 5,
@@ -51,13 +51,13 @@ export const searchByIngredient = (text) => async dispatch => {
   dispatch({type: SEARCH, payload: response.data});
 }
 
-export const searchByCuisine = (text) => async dispatch => {
+export const searchByKeyword = (text) => async dispatch => {
   const response = await axios({
     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
     method: 'get',
     params: {
       instructionsRequired: true,
-      cuisine: text,
+      query: text,
       limitLicense: false,
       number: 5,
     },
@@ -68,4 +68,14 @@ export const searchByCuisine = (text) => async dispatch => {
   });
   console.log(response.data.results);
   dispatch({type: SEARCH, payload: response.data.results});
+}
+
+export const fetchUser = () => async dispatch => {
+  const response = await axios.get('/api/current_user');
+  dispatch({type: FETCH_USER, payload: response.data});
+}
+
+export const handleSave = (id) => async dispatch => {
+  const response = await axios.post('/api/save', {id});
+  dispatch({type: FETCH_USER, payload: response.data});
 }

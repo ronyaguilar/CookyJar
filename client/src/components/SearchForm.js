@@ -22,10 +22,10 @@ class SearchForm extends Component {
     console.log("Handling submit with: " + this.props.category);
     switch(this.props.category){
       case 'ingredients':
-        this.props.searchByIngredient(this.state.value);
+        this.props.searchByIngredients(this.state.value);
         break;
-      case 'cuisine':
-        this.props.searchByCuisine(this.state.value);
+      case 'keyword':
+        this.props.searchByKeyword(this.state.value);
         break;
       default:
         break;

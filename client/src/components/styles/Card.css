@@ -1,0 +1,9 @@
+.like {
+    color: red;
+    position: relative;
+    left: 10px;
+    top: 5px;
+}
+.like:hover{
+    cursor: pointer;
+}
