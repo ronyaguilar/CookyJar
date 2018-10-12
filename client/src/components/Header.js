@@ -15,12 +15,11 @@ class Header extends Component {
       default:
         return (
           <div className='dropdown'>
-            <button className='btn btn-dark'>Hello {this.props.auth.name} <i class="fas fa-caret-down"></i> </button>
+            <button className='btn btn-dark'>Hello {this.props.auth.name} <i className="fas fa-caret-down"></i> </button>
             <div className='dropdown-content'>
               // TODO: Add Saved Recipes Page
               <Link to='#' className=''>View Saved Recipes</Link>
-              // TODO: Fix Logout
-              <Link to='/api/logout' className=''>Logout</Link>
+              <a href='/api/logout' className=''>Logout</a>
             </div>
           </div>);
     }

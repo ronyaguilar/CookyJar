@@ -47,7 +47,6 @@ export const searchByIngredients = (text) => async dispatch => {
       'Accept': 'application/json'
     }
   });
-  console.log(response.data);
   dispatch({type: SEARCH, payload: response.data});
 }
 
@@ -66,7 +65,6 @@ export const searchByKeyword = (text) => async dispatch => {
       'Accept': "application/json"
     }
   });
-  console.log(response.data.results);
   dispatch({type: SEARCH, payload: response.data.results});
 }
 

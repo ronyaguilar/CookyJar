@@ -8,7 +8,7 @@ class ResultList extends Component {
 
   renderResults() {
     return(
-      this.props.results.map(_recipe => <ResultCard recipe={_recipe} />)
+      this.props.results.map(_recipe => <ResultCard key={_recipe.id} recipe={_recipe} />)
     );
   }
   render(){
